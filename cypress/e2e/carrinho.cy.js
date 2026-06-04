@@ -13,11 +13,6 @@ describe('carrinho', () =>{
 
 
     it('Adicionar produto ao carrinho com sucesso', () => {
-
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-
-        cy.screenshot('produto adicionado')
-        
         const qtdItensAdicionados = 1
         Inventory.adicionarProduto('Sauce Labs Backpack')
 
@@ -28,14 +23,11 @@ describe('carrinho', () =>{
     })
 
     it('Remover produto do carrinho com sucesso', () => {
+        Inventory.adicionarProduto('Sauce Labs Backpack')
 
+        Inventory.removerProduto('Sauce Labs Backpack')
 
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-
-        cy.get('.shopping_cart_badge').should('be.visible')
-
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
-
-        cy.screenshot('produto removido')
+        header.validarQueCarrinhoNaoPossuiItens()
+      
     })
 })
