@@ -1,9 +1,10 @@
 import { elements as el } from "./elements"
+import { MESSAGES } from '../../support/constants'
 
 
 class Login {
     visitarPagina(){
-        cy.visit('https://www.saucedemo.com/')
+        cy.visit('/')
     }
 
     preencherCredenciaisValidas(){
@@ -20,10 +21,43 @@ class Login {
 
     validarErroCredenciaisInvalidas() {
         cy.get(el.errorMessage)
-            .should('contain.text', 'Epic sadface: Username and password do not match any user in this service')
-
-        cy.url().should('eq', 'https://www.saucedemo.com/')
+            .should('contain.text', MESSAGES.credenciaisInvalidas)
         cy.screenshot('erro credenciais inválidas')
+    }
+
+    UsuarioBloqueado () {
+        cy.get(el.username).type('locked_out_user')
+        cy.get(el.password).type('secret_sauce')
+        cy.get(el.loginButton).click()   
+    }
+
+    validarMensagemBloqueado() {
+        cy.get(el.errorMessage)
+            .should('contain.text', MESSAGES.usuarioBloqueado)
+        cy.screenshot('erro usuário bloqueado')
+    }
+
+    validarPreenchimentoUsuario() {
+        cy.get(el.password).type('secret_sauce')
+        cy.get(el.loginButton).click()   
+    }
+
+    validarErroPreenchimentoUsuario () {
+        cy.get(el.errorMessage)
+            .should('contain.text', MESSAGES.usuarioObrigatorio)
+        cy.screenshot('erro usuário em branco')
+    }
+
+    validarPreenchimentoSenha() {
+        cy.get(el.username).type('standard_user')
+        cy.get(el.loginButton).click()   
+    }
+
+
+    validarErroPreenchimentoSenha () {
+        cy.get(el.errorMessage)
+            .should('contain.text', MESSAGES.senhaObrigatoria)
+        cy.screenshot('erro senha em branco')
     }
 }
 
