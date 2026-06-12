@@ -13,6 +13,11 @@ class Inventory {
     removerProduto(itemName) {
         cy.get(el.removeFromCart(itemName)).click()
     }
+
+    validarAcessoPaginaCheckout() {
+        cy.url().should('eq', 'https://www.saucedemo.com/checkout-step-one.html')
+        cy.screenshot('Acesso a página de checkout')
+    }
 }
 
 export default new Inventory()
