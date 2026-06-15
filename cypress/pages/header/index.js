@@ -1,8 +1,8 @@
 import { elements as el  } from "./elements"
 
 class Header {
-   validarQueCarrinhoPossuiItens (quantidade){
-      cy.get('el.cartBadge')
+   validarQuantidadeCarrinho (quantidade){
+      cy.get(el.cartBadge)
         .should('be.visible')
         .and('have.text', quantidade,toString())
    }
@@ -16,6 +16,12 @@ class Header {
          .should('not.exist')
 
       cy.screenshot('produto removido')
+   }
+
+   validarQueCarrinhoPossuiItens() {
+      cy.get(el.cartBadge)
+         .should('exist')
+         .and('not.be.empty')
    }
 
 }

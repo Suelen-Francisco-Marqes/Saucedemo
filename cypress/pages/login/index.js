@@ -59,6 +59,12 @@ class Login {
             .should('contain.text', MESSAGES.senhaObrigatoria)
         cy.screenshot('erro senha em branco')
     }
+
+    validarSenhaOculta() {
+        cy.get(el.password)
+            .should('have.attr', 'type', 'password')
+    cy.screenshot('senha oculta')
+    }
 }
 
 export default new Login()
