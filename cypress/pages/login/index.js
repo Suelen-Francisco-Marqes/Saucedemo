@@ -1,6 +1,6 @@
 import { elements as el } from "./elements"
 import { MESSAGES } from '../../support/constants'
-
+import inventory from '../inventory'
 
 class Login {
     visitarPagina(){
@@ -65,6 +65,31 @@ class Login {
             .should('have.attr', 'type', 'password')
     cy.screenshot('senha oculta')
     }
+
+    preencherCredenciaisPerformance() {
+        cy.get(el.username).type('performance_glitch_user')
+        cy.get(el.password).type('secret_sauce')
+        cy.get(el.loginButton).click()
+    }
+
+    validarAcessoComDelay() {
+        cy.get(el.username, { timeout: 10000 })
+        inventory.validarAcessoAPagina()
+        cy.screenshot('login performance')
+    }
+
+    preencherCredenciaisVisual() {
+        cy.get(el.username).type('visual_user')
+        cy.get(el.password).type('secret_sauce')
+        cy.get(el.loginButton).click()
+    }
+
+    validarAcessoVisualUser() {
+        inventory.validarAcessoAPagina()
+        cy.get('.inventory_item').should('be.visible')
+        cy.screenshot('login visual user - verificar layout')
+    }
+
 }
 
 export default new Login()

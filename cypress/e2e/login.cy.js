@@ -38,4 +38,14 @@ beforeEach(() => {
         Login.validarSenhaOculta()
     })
 
+    it('Login com performance_glitch_user', () => {
+        Login.preencherCredenciaisPerformance()
+        Login.validarAcessoComDelay()
+    })
+
+    it('Login com visual_user', () => {
+        Login.preencherCredenciaisVisual()
+        Login.validarAcessoVisualUser()
+    })
+
 })
