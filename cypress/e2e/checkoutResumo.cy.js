@@ -5,7 +5,6 @@ import Header from "../pages/header"
 import Cart from "../pages/cart"
 import CheckoutResumo from '../pages/checkoutResumo'
 import { DATA } from '../support/data'
-import inventory from '../pages/inventory'
 
 
 describe('CheckoutResumo', () => {

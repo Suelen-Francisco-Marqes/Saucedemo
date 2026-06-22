@@ -6,5 +6,6 @@ export const MESSAGES = {
   senhaObrigatoria: 'Epic sadface: Password is required',
   InformacaoNomeCheckoutVazio: 'Error: First Name is required',
   InformacaoSobrenomeCheckoutVazio: 'Error: Last Name is required',
-  InformacaoCep: 'Error: Postal Code is required'
+  InformacaoCep: 'Error: Postal Code is required',
+  
 }
