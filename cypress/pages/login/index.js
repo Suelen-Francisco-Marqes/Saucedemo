@@ -73,7 +73,6 @@ class Login {
     }
 
     validarAcessoComDelay() {
-        cy.get(el.username, { timeout: 10000 })
         inventory.validarAcessoAPagina()
         cy.screenshot('login performance')
     }
