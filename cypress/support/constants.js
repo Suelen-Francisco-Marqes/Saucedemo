@@ -4,5 +4,8 @@ export const MESSAGES = {
   usuarioBloqueado: 'Epic sadface: Sorry, this user has been locked out.',
   usuarioObrigatorio: 'Epic sadface: Username is required',
   senhaObrigatoria: 'Epic sadface: Password is required',
-  InformacaoNomeCheckoutVazio: 'Error: First Name is required'
+  InformacaoNomeCheckoutVazio: 'Error: First Name is required',
+  InformacaoSobrenomeCheckoutVazio: 'Error: Last Name is required',
+  InformacaoCep: 'Error: Postal Code is required',
+  
 }
