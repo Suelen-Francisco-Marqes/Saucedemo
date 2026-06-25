@@ -8,7 +8,7 @@ import { DATA } from '../support/data'
 import inventory from '../pages/inventory'
 
 
-describe('CheckoutResumo', () => {
+describe('Checkout - Resumo e Finalização de Compra', () => {
 
     beforeEach(() => {
         Login.visitarPagina()
@@ -24,25 +24,25 @@ describe('CheckoutResumo', () => {
         Checkout.continuar()  
     })
 
-    it('Validar produto no resumo', () => {
+    it('Exibir o nome do produto no resumo do pedido', () => {
         CheckoutResumo.validarNomeProduto()
     })
 
-    it('validarQuantidadeProduto', () => {
+    it('Exibir a quantidade correta de produtos no resumo', () => {
         CheckoutResumo.validarNomeProduto()
     })
 
-    it('Validar o total', () => {
+    it('Exibir o valor total correto no resumo do pedido', () => {
         CheckoutResumo.validarTotal()
     })
 
-    it('Cancelar resumo volta para o inventário', () => {
+    it('Retornar ao inventário ao cancelar o resumo', () => {
         CheckoutResumo.cancelar()
 
         Inventory.validarAcessoAPagina()
     })
 
-    it('Finalizar compra com sucesso', () => {
+    it('Finalizar a compra com sucesso e exibir confirmação', () => {
         CheckoutResumo.finalizarCompra()
         Checkout.validarSucesso()  // ← reutiliza o que já existe!
     })
