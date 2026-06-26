@@ -1,8 +1,8 @@
 import Login from '../pages/login'
-import Checkout from '../pages/checkout'
-import Inventory from '../pages/inventory'
-import Header from '../pages/header'
-import Cart from '../pages/cart'
+import Checkout from "../pages/checkout"
+import Inventory from "../pages/inventory"
+import Header from "../pages/header"
+import Cart from "../pages/cart"
 import { DATA } from '../support/data'
 
 describe('Checkout - Preenchimento e Validação de Formulário', () => {
@@ -11,36 +11,36 @@ describe('Checkout - Preenchimento e Validação de Formulário', () => {
         Login.acessarPaginaDeLogin()
         Login.preencherCredenciaisValidas()
 
-        Inventory.adicionarProdutoAoCarrinho(DATA.produto)
-
+        Inventory.adicionarProduto(DATA.produto)
+        
         Header.navegarParaCarrinho()
 
-        Cart.iniciarCheckout()
+        Cart.irParaCheckout()
     })
 
-    it('Finalizar a compra com sucesso ao preencher informações válidas', () => {
-        Checkout.preencherInformacoesDeEntrega()
-        Checkout.avancarParaResumo()
-        Checkout.finalizarCompra()
-        Checkout.validarConfirmacaoDePedido()
+    it('Finalidar compra', () => {
+        Checkout.preencherInformacoesValidas()   
+        Checkout.continuar()
+        Checkout.finalizarCompra()               
+        Checkout.validarSucesso()               
     })
 
-    it('Exibir erro ao tentar avançar com o primeiro nome em branco', () => {
-        Checkout.submeterFormularioSemPrimeiroNome()
-        Checkout.avancarParaResumo()
-        Checkout.validarMensagemDeErroPrimeiroNomeObrigatorio()
+    it('Nome vazio', () => {        
+        Checkout.primeiroNomeVazio()
+        Checkout.continuar()
+        Checkout.validarNomeCheckout()
     })
 
-    it('Exibir erro ao tentar avançar com o sobrenome em branco', () => {
-        Checkout.submeterFormularioSemSobrenome()
-        Checkout.avancarParaResumo()
-        Checkout.validarMensagemDeErroSobrenomeObrigatorio()
+    it('Sobrenome vazio', () => {     
+        Checkout.segundoNomeVazio()
+        Checkout.continuar()
+        Checkout.validarSegundoNomeCheckout()
     })
 
-    it('Exibir erro ao tentar avançar com o CEP em branco', () => {
-        Checkout.submeterFormularioSemCep()
-        Checkout.avancarParaResumo()
-        Checkout.validarMensagemDeErroCepObrigatorio()
+    it('Validar checkout vazio', () => {
+        Checkout.validarCepCheckout()
+        Checkout.continuar()
+        Checkout.validacaoCep()
     })
 
 })

@@ -4,9 +4,9 @@ import inventory  from '../pages/inventory'
 
 describe('Login', () => {
 
-beforeEach(() => {
-    Login.visitarPagina()
-})
+    beforeEach(() => {
+        Login.visitarPagina()
+    })
 
     it('Realizar login com sucesso', () => {
         Login.preencherCredenciaisValidas()
@@ -36,6 +36,16 @@ beforeEach(() => {
     it('deve ocultar a senha digitada', () => {
         Login.visitarPagina()
         Login.validarSenhaOculta()
+    })
+
+    it('Login com performance_glitch_user', () => {
+        Login.preencherCredenciaisPerformance()
+        Login.validarAcessoComDelay()
+    })
+
+    it('Login com visual_user', () => {
+        Login.preencherCredenciaisVisual()
+        Login.validarAcessoVisualUser()
     })
 
 })
