@@ -2,41 +2,38 @@ import Login from "../pages/login"
 import Inventory from "../pages/inventory"
 import Header from "../pages/header"
 import Cart from "../pages/cart"
+import { DATA } from "../support/data"
 
 describe('carrinho', () =>{
 
     beforeEach(() => {
         Login.visitarPagina()
         Login.preencherCredenciaisValidas()
+
+        Inventory.adicionarProduto(DATA.produto)
     })
 
 
-    it('Adicionar produto ao carrinho com sucesso', () => {
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-        
+    it('Adicionar produto ao carrinho com sucesso', () => {        
         Header.validarQuantidadeCarrinho(1)
         Header.navegarParaCarrinho()
 
-        Cart.validarProdutoPresenteNoCarrinho('Sauce Labs Backpack')
+        Cart.validarProdutoPresenteNoCarrinho(DATA.produto)
     })
 
     it('Remover produto do carrinho com sucesso', () => {
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-        Inventory.removerProduto('Sauce Labs Backpack')
+        Inventory.removerProduto(DATA.produto)
 
         Header.validarQueCarrinhoNaoPossuiItens()     
     })
 
     it('Verificar quantidade de múltiplos itens no carrinho', () => {
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-        Inventory.adicionarProduto('Sauce Labs Bike Light')
+        Inventory.adicionarProduto(DATA.segundoProduto)
 
         Header.validarQueCarrinhoPossuiItens()
     })
 
-    it.only('Clicar em para voltar a loja', () => {
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-        
+    it('Clicar em para voltar a loja', () => {        
         Header.navegarParaCarrinho()
 
         Cart.voltarParaLoja()
@@ -44,9 +41,7 @@ describe('carrinho', () =>{
         Inventory.validarAcessoAPagina()
     })
 
-    it.only('Ir para o checkout', () => {
-        Inventory.adicionarProduto('Sauce Labs Backpack')
-
+    it('Ir para o checkout', () => {
         Header.navegarParaCarrinho()
 
         Cart.irParaCheckout()
