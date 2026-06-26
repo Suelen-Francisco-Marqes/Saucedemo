@@ -5,11 +5,10 @@ import Header from "../pages/header"
 import Cart from "../pages/cart"
 import { DATA } from '../support/data'
 
-
-describe('checkout', () =>{
+describe('Checkout - Preenchimento e Validação de Formulário', () => {
 
     beforeEach(() => {
-        Login.visitarPagina()
+        Login.acessarPaginaDeLogin()
         Login.preencherCredenciaisValidas()
 
         Inventory.adicionarProduto(DATA.produto)
