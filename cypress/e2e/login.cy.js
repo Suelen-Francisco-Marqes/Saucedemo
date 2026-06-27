@@ -33,7 +33,7 @@ describe('Login', () => {
         Login.validarErroPreenchimentoSenha()
     })
 
-    it('deve ocultar a senha digitada', () => {
+    it('Ocultar a senha digitada', () => {
         Login.visitarPagina()
         Login.validarSenhaOculta()
     })
