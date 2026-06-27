@@ -9,28 +9,28 @@ describe('Menu', () =>{
         Login.preencherCredenciaisValidas()
     })
 
-    it('deve abrir o menu lateral', () => {
+    it('Abrir o menu lateral', () => {
         Menu.clicarMenulateral()
     })
 
-    it('eve exibir todos os itens do menu lateral', () => {
+    it('Exibir todos os itens do menu lateral', () => {
         Menu.clicarMenulateral()
         Menu.clicarEmTodosOsItens()
         
     })
 
-    it('deve retornar para a listagem de produtos', () =>{
+    it('Retornar para a listagem de produtos', () =>{
         Menu.clicarNoProduto()
         Menu.clicarMenulateral()
         Menu.ExibirTodosItensDoMenu()
     })
 
-    it('deve acessar a página Sobre', () =>{
+    it('Acessar a página Sobre', () =>{
         Menu.clicarMenulateral()
         Menu.clicarEmSobre()
     })
 
-    it('deve realizar logout do site', () =>{
+    it('Realizar logout do site', () =>{
         Menu.clicarMenulateral()
         Menu.clicarEmSair()
     })
