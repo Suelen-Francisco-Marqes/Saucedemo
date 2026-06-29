@@ -1,5 +1,6 @@
 import Menu from '../pages/menu'
 import Login from "../pages/login"
+import inventory  from '../pages/inventory'
 
 
 describe('Menu', () =>{
@@ -7,6 +8,8 @@ describe('Menu', () =>{
     beforeEach(() => {
         Login.visitarPagina()
         Login.preencherCredenciaisValidas()
+        inventory.validarAcessoAPagina()
+
     })
 
     it('deve abrir o menu lateral', () => {
@@ -34,6 +37,4 @@ describe('Menu', () =>{
         Menu.clicarMenulateral()
         Menu.clicarEmSair()
     })
-    
-
 })
